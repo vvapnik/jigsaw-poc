@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@apollo/client": "^3.11.5",
+    "@vapnik/jigsaw": "0.0.1-alpha18",
+    "dotenv": "^16.4.5",
+    "graphql": "^16.9.0",
+    "i": "^0.3.7",
+    "next": "^14.2.7",
+    "npm": "^10.8.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "uuid": "^10.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "release": "npm run build & npm publish",
+    "run": "ts-node ./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "20.16.1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5"
+  }
+}
