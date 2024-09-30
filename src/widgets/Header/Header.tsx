@@ -1,17 +1,22 @@
 import {Widget} from "@vapnik/jigsaw";
 import * as React from "react";
-import {PageService} from "@/services/Page/PageService";
+import logo from './logo.svg'
+import Image from "next/image";
 
-@Widget()
+import './style.scss'
+
+@Widget('Header')
 export class Header {
 
-    constructor(private pageService: PageService) {
+    constructor() {
     }
 
     async resolve() {
-        const page = this.pageService.getCurrentPage()
-        return <div>
-            <h1>{page.name}</h1>
-        </div>
+        console.log('render header')
+        return <header className="header">
+            <div className="logo">
+                <Image src={logo} alt={'Jigsaw'} height={100}/>
+            </div>
+        </header>
     }
 }
