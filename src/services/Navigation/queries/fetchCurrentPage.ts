@@ -1,4 +1,4 @@
-export const fetchCurrentPageQuery = (url: string) => `pageCollection(where:{url:"${url}"}) {
+export const fetchPagesQuery = () => `pageCollection(order: [order_ASC]) {
   items {
     _id
     name

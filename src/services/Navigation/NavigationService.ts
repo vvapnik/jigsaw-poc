@@ -1,7 +1,7 @@
 import {Service} from "@vapnik/jigsaw";
 import {headers} from "next/headers";
 import {ContentfulService} from "@/services/Contentful/ContentfulService";
-import {fetchCurrentPageQuery} from "@/services/Navigation/queries/fetchCurrentPage";
+import {fetchPagesQuery} from "@/services/Navigation/queries/fetchCurrentPage";
 
 const HEADER_URL = 'x-navigation-url'
 
@@ -14,27 +14,37 @@ export type Page = {
 @Service()
 export class NavigationService {
     private currentPage?: Page
-    private readonly currentPageQueryRegistration: Symbol
+    private pagesList?: Page[]
+    private readonly pagesQueryRegistration: Symbol
 
     constructor(private contentful: ContentfulService) {
-        this.currentPageQueryRegistration = this.registerCurrentPageQuery()
+        this.pagesQueryRegistration = this.registerPagesQuery()
     }
 
-    private registerCurrentPageQuery(): Symbol {
-        return this.contentful.registerQuery(fetchCurrentPageQuery(this.getCurrentPath()))
+    private registerPagesQuery(): Symbol {
+        return this.contentful.registerQuery(fetchPagesQuery())
     }
 
     public getCurrentPage(): Page {
         if (!this.currentPage) {
-            const queryResponse = this.contentful.getQueryResult(this.currentPageQueryRegistration)
+            const queryResponse = this.contentful.getQueryResult(this.pagesQueryRegistration)
 
-            const page = ((queryResponse as Record<string, unknown>)?.items as Page[])[0]
-            if (!page) {
+            const pages = ((queryResponse as Record<string, unknown>)?.items as Page[])
+            const currentPage = pages.find(page => page.url === this.getCurrentPath())
+            if (!currentPage) {
                 throw Error('404 current page not found')
             }
-            this.currentPage = page
+            this.currentPage = currentPage
         }
         return this.currentPage
+    }
+
+    public getPagesList(): Page[] {
+        if (!this.pagesList) {
+            const queryResponse = this.contentful.getQueryResult(this.pagesQueryRegistration)
+            this.pagesList = ((queryResponse as Record<string, unknown>)?.items as Page[])
+        }
+        return this.pagesList
     }
 
     getCurrentPath(): string {

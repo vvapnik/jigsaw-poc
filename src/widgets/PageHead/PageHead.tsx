@@ -2,16 +2,16 @@ import {Widget} from "@vapnik/jigsaw";
 import * as React from "react";
 import {NavigationService} from "@/services/Navigation/NavigationService";
 
-@Widget()
+@Widget('PageHead')
 export class PageHead {
     constructor(private navigationService: NavigationService) {
     }
 
     async resolve() {
-        const {} = this.navigationService.getCurrentPage()
+        const {name} = this.navigationService.getCurrentPage()
         return (
             <head>
-                <title>Test</title>
+                <title>{name + ' | Jigsaw'}</title>
             </head>
         )
     }

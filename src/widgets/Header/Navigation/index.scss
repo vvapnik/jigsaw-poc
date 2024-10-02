@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+
+  .link {
+    margin: auto 10px;
+    text-decoration: none;
+    color: black;
+
+    &.active {
+      color: #10a6a6;
+      cursor: default;
+    }
+  }
+}
