@@ -1,12 +1,13 @@
 .header {
+  background-color: #8e9499;
+  padding: 20px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-  overflow: hidden;
-  height: 55px;
-  border-bottom: 1px solid #efefef;
-
-  .logo {
-    max-height: 80px;
-    margin-top: -25px;
+  .logo img {
+    height: 50px;
+    width: auto;
   }
 }

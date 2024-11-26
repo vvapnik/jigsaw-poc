@@ -6,7 +6,7 @@ export type ArticleProps = {
     article: Article
 }
 export const DocumentationArticle: FC<ArticleProps> = ({article}) => {
-    return <article className="documnetation-article">
+    return <article className="documnetation-article" id={article.title}>
         <h2 className="documentation-article-title">{article.title}</h2>
         <main className="documentation-article-main">
             {documentToReactComponents(article.article.json)}

@@ -3,6 +3,6 @@ import {CommonLayoutTemplate} from "@/layouts/common";
 
 export const Main: Layout = async (widgets) => {
     return <CommonLayoutTemplate widgets={widgets}>
-        Hi!
+        {widgets["FrameworkOverview"]}
     </CommonLayoutTemplate>
 }

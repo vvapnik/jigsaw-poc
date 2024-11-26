@@ -1,14 +1,22 @@
 .navigation {
   display: flex;
+  gap: 15px;
 
   .link {
-    margin: auto 10px;
+    color: #ecf0f1;
     text-decoration: none;
-    color: black;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 
-    &.active {
-      color: #10a6a6;
-      cursor: default;
+    &:hover {
+      background-color: #34495e;
     }
+  }
+
+  .active {
+    background-color: #1abc9c;
+    color: #fff;
   }
 }

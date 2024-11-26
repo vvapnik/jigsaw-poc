@@ -4,7 +4,7 @@ import {queryAllDocuments} from "@/widgets/DocumentationArticles/queryAllDocumen
 import {DocumentationArticle} from "@/widgets/DocumentationArticles/DocumentationArticle";
 import {Article} from "@/widgets/DocumentationArticles/types";
 
-
+import './style.css'
 @Widget('DocumentationArticles')
 export class DocumentationArticles {
 
